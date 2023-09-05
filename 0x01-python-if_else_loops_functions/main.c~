@@ -1,0 +1,11 @@
+#include "lists.h"
+/**
+ * main - main function
+ * Return: 0 if success
+ */
+ int main(void)
+{
+	listint_t *head = NULL;
+	(void)(head);
+	return (0);
+}
