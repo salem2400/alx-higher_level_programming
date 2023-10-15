@@ -1,70 +1,49 @@
 #!/usr/bin/python3
-"""module for use with square class
-"""
-
-
+'''Module for Square class.'''
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """square class for use as an object,
-        -> inherits from rectangle,
-        -> rectangle inherits from Base
-    """
+    '''A Square class.'''
+
     def __init__(self, size, x=0, y=0, id=None):
+        '''Constructor.'''
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
-        builder = "[Square] ({}) {}/{} - {}".format(self.id,
-                                                    self.x,
-                                                    self.y,
-                                                    self.width)
-        return builder
-
-    def update(self, *args, **kwargs):
-        """takes an *args argument and sets arguments respective
-            to instantiation function
-        """
-        if args is not None and len(args) > 0:
-            for i, arg in enumerate(args):
-                if i == 0:
-                    self.id = arg
-                elif i == 1:
-                    self.size = arg
-                elif i == 2:
-                    self.x = arg
-                elif i == 3:
-                    self.y = arg
-        elif kwargs is not None:
-            for (key, value) in kwargs.items():
-                if key == "id":
-                    self.id = value
-                elif key == "size":
-                    self.size = value
-                elif key == "x":
-                    self.x = value
-                elif key == "y":
-                    self.y = value
-
-    def to_dictionary(self):
-        """gets the dictionary representation of a square object
-        """
-        new_d = super().to_dictionary()
-        del new_d['height']
-        del new_d['width']
-        new_d['size'] = self.size
-        return new_d
-
-    def to_csv(self):
-        """returns a list containing csv representation of rectangle
-        """
-        return [self.id, self.size, self.x, self.y]
+        '''Returns string info about this square.'''
+        return '[{}] ({}) {}/{} - {}'.\
+            format(type(self).__name__, self.id, self.x, self.y, self.width)
 
     @property
     def size(self):
+        '''Size of this square.'''
         return self.width
 
     @size.setter
     def size(self, value):
         self.width = value
         self.height = value
+
+    def __update(self, id=None, size=None, x=None, y=None):
+        '''Internal method that updates instance attributes via */**args.'''
+        if id is not None:
+            self.id = id
+        if size is not None:
+            self.size = size
+        if x is not None:
+            self.x = x
+        if y is not None:
+            self.y = y
+
+    def update(self, *args, **kwargs):
+        '''Updates instance attributes via no-keyword & keyword args.'''
+        if args:
+            self.__update(*args)
+        elif kwargs:
+            self.__update(**kwargs)
+
+    def to_dictionary(self):
+        '''Returns dictionary representation of this class.'''
+        return {"id": self.id, "size": self.width,
+                "x": self.x, "y": self.y}
