@@ -1,5 +1,11 @@
--- Script that lists all records with a score >= 10 in the table second_table
-SELECT `score`, `name`
-FROM `second_table`
-WHERE `score` >= 10
-ORDER BY `score` DESC;
+-- Filters out some records of selected fields from a table in a database
+-- in a MySQL server, and displays them in a particular order.
+SELECT
+    `score`,
+    `name`
+FROM
+    `second_table`
+WHERE
+    `score` >= 10
+ORDER BY
+    `score` DESC;

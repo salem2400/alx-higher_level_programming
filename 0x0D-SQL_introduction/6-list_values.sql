@@ -1,2 +1,5 @@
--- Script to list all rows from table in the database
-SELECT * FROM first_table;
+-- Lists all the rows of a table in a database in a MySQL server.
+SELECT
+    *
+FROM
+    `first_table`;

@@ -1,2 +1,2 @@
--- List TABLES In the databse
+-- Lists all the tables of a database in a MySQL server.
 SHOW TABLES;
