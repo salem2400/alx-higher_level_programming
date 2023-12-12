@@ -1,0 +1,43 @@
+sudo service mysql status
+sudo service mysql start
+
+(on another shell)
+sudo mysql 
+CREATE DATABASE school;   or    create database school;
+show databases;
+use school;
+
+
+create table student(
+ -> ID int,
+ -> fname varchar(255),
+ -> lname varchar(255),
+ -> age int);
+
+
+DESCRIBE student;
+
+ INSERT INTO      ->student(ID,fname,lname,age)  ->VALUES(2501,"Jack","Andrews",16);
+
+
+
+UPDATE table_name
+SET column1 = value1, column2 = value2, … columnN = valueN
+WHERE condition;
+
+
+ UPDATE student 
+ -> SET lname ="Anders"
+ -> WHERE fname = "Jack";
+
+
+
+DELETE FROM table_name 
+WHERE condition;
+
+> DELETE FROM student 
+WHERE fname = "Jack";
+
+
+
+SELECT * FROM table_name;
